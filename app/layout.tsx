@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://perceptron.kisara.my.id",
+  ),
   title: "Klasifikasi Bibit Padi",
   description: "Sistem klasifikasi kelayakan bibit padi berbasis perceptron",
   manifest: "/manifest.webmanifest",
@@ -30,6 +33,20 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        url: "/icons/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+      {
         url: "/icons/icon-192.svg",
         sizes: "192x192",
         type: "image/svg+xml",
@@ -40,7 +57,26 @@ export const metadata: Metadata = {
         type: "image/svg+xml",
       },
     ],
-    apple: "/icons/icon-192.svg",
+    apple: "/icons/icon-192.png",
+  },
+  openGraph: {
+    title: "Klasifikasi Bibit Padi",
+    description: "Sistem klasifikasi kelayakan bibit padi berbasis perceptron",
+    type: "website",
+    images: [
+      {
+        url: "/icons/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: "Icon Klasifikasi Bibit Padi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Klasifikasi Bibit Padi",
+    description: "Sistem klasifikasi kelayakan bibit padi berbasis perceptron",
+    images: ["/icons/icon-512.png"],
   },
 };
 

@@ -1,10 +1,15 @@
 import type { ApiResponse } from "@/types/bibit"
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000"
+  process.env.NEXT_PUBLIC_API_BASE_URL ??
+  (process.env.NODE_ENV === "production"
+    ? "https://api.perceptron.kisara.my.id"
+    : "http://localhost:8000")
+
+const normalizedApiBaseUrl = API_BASE_URL.replace(/\/$/, "")
 
 export async function requestApi<T>(path: string, init?: RequestInit) {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const response = await fetch(`${normalizedApiBaseUrl}${path}`, {
     headers: {
       "Content-Type": "application/json",
       ...init?.headers,
